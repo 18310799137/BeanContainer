@@ -1,12 +1,13 @@
-package com.zgh.spring.ioc.container;
+package com.zgh.spring.ioc.container.test;
 
+import com.zgh.spring.ioc.container.HelloWorldSpringService;
 import com.zgh.spring.ioc.container.bean.BeanDefinition;
 import com.zgh.spring.ioc.container.bean.BeanProperty;
 import com.zgh.spring.ioc.container.bean.BeanPropertys;
 import com.zgh.spring.ioc.container.factory.BeanFactory;
 import com.zgh.spring.ioc.container.factory.DefaultBeanFactory;
 
-public class Test {
+public class MainTest {
 
 	public static void main(String[] args) {
 

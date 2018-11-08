@@ -1,4 +1,6 @@
-package com.zgh.spring.ioc.container;
+package com.zgh.spring.ioc.container.factory;
+
+import com.zgh.spring.ioc.container.bean.BeanDefinition;
 
 public interface BeanFactory {
 

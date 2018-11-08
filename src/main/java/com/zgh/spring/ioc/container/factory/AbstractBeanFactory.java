@@ -1,7 +1,9 @@
-package com.zgh.spring.ioc.container;
+package com.zgh.spring.ioc.container.factory;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.zgh.spring.ioc.container.bean.BeanDefinition;
 
 /**
  * Hello world!
@@ -22,4 +24,8 @@ public abstract class AbstractBeanFactory implements BeanFactory
 	}
    
 	public abstract Object createBean(BeanDefinition beanDefinition);
+	
+	
+	public abstract void assignmentBeanProperties(Object object,BeanDefinition beanDefinition);
+	
 }

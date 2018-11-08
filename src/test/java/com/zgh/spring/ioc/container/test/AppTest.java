@@ -1,17 +1,20 @@
-package com.zgh.spring.ioc.container;
+package com.zgh.spring.ioc.container.test;
 
+import com.zgh.spring.ioc.container.HelloWorldSpringService;
 import com.zgh.spring.ioc.container.bean.BeanDefinition;
 import com.zgh.spring.ioc.container.bean.BeanProperty;
 import com.zgh.spring.ioc.container.bean.BeanPropertys;
 import com.zgh.spring.ioc.container.factory.BeanFactory;
 import com.zgh.spring.ioc.container.factory.DefaultBeanFactory;
 
-public class Test {
+import junit.framework.TestCase;
 
-	public static void main(String[] args) {
-
-		BeanFactory beanFactory = new DefaultBeanFactory();
-
+public class AppTest 
+    extends TestCase
+{
+    public void testApp()
+    {
+    	BeanFactory beanFactory = new DefaultBeanFactory();
 		BeanDefinition beanDefinition = new BeanDefinition("com.zgh.spring.ioc.container.HelloWorldSpringService");
 		
 		BeanPropertys beanPropertys = beanDefinition.getBeanPropertys();
@@ -25,5 +28,5 @@ public class Test {
 
 		helloWorldSpringService.doService();
 
-	}
+    }
 }
