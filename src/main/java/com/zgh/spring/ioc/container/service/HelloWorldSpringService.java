@@ -1,4 +1,4 @@
-package com.zgh.spring.ioc.container;
+package com.zgh.spring.ioc.container.service;
 
 public class HelloWorldSpringService {
 
