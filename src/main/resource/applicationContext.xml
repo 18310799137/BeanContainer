@@ -20,9 +20,14 @@
  		<property name="stringText" value="Hello! This is Field Stringtext Value!" />
 		<property name="stringValue" value="Hello! This is Field stringValue Text!" />
  	</bean>
- 	<bean id="helloSpringServiceCloudService" class="com.zgh.spring.ioc.container.service.CloudService">
+ 	<bean id="cloudService" class="com.zgh.spring.ioc.container.service.CloudService">
  		<property name="cloudServiceText">
 					<value>Do Cloud Service ...</value>
 		</property>
+		<property name="helloWorldSpringService" ref="helloSpringService"></property>
+		<property name="userService" ref="userService"></property>
+ 	</bean>
+ 	<bean id="userService" class="com.zgh.spring.ioc.container.service.UserService">
+ 		<property name="userName" value="风清扬"/>
  	</bean>
 </beans>  

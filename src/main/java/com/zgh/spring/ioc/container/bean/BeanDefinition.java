@@ -36,4 +36,9 @@ public class BeanDefinition {
 		this.className = className;
 	}
 
+	@Override
+	public String toString() {
+		return "BeanDefinition [bean=" + bean + ", className=" + className + ", beanPropertys=" + beanPropertys + "]";
+	}
+
 }

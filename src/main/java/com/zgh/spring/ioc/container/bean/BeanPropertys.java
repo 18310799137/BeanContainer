@@ -15,4 +15,9 @@ public class BeanPropertys {
 		this.beanProperties.add(beanProperty);
 	}
 
+	@Override
+	public String toString() {
+		return "BeanPropertys [beanProperties=" + beanProperties + "]";
+	}
+
 }

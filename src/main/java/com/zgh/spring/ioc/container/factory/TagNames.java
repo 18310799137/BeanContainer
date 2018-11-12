@@ -10,7 +10,8 @@ package com.zgh.spring.ioc.container.factory;
  */
 public enum TagNames {
 
-	bean("bean"), id("id"), className("class"), property("property"), name("name"), value("value");
+	bean("bean"), id("id"), className("class"), property("property"), name("name"), 
+	value("value"),ref("ref");
 	private TagNames(String nameStringText) {
 		this.nameStringText=nameStringText;
 	}

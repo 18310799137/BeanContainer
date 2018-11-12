@@ -7,6 +7,7 @@ import java.util.List;
 import com.zgh.spring.ioc.container.bean.BeanDefinition;
 import com.zgh.spring.ioc.container.bean.BeanProperty;
 import com.zgh.spring.ioc.container.bean.BeanPropertys;
+import com.zgh.spring.ioc.container.bean.BeanReference;
 /**
  * BeanFactory实现类
  * @author Administrator
@@ -72,7 +73,12 @@ public abstract class BeanCreateFactory extends AbstractBeanFactory {
 			try {
 				Field declaredField = object.getClass().getDeclaredField(next.getPropertyName());
 				declaredField.setAccessible(true);
-				declaredField.set(object, next.getPropertyValue());
+				Object propertyValue = next.getPropertyValue();
+				if(propertyValue instanceof BeanReference) {
+					declaredField.set(object,getBean(((BeanReference)propertyValue).getRefName()));
+				}else {
+					declaredField.set(object,propertyValue);
+				}
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
 				e.printStackTrace();
 			}

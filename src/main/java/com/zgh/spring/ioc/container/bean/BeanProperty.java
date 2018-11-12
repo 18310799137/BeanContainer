@@ -28,7 +28,12 @@ public class BeanProperty {
 	public void setPropertyValue(Object propertyValue) {
 		this.propertyValue = propertyValue;
 	}
+
+	@Override
+	public String toString() {
+		return "BeanProperty [propertyName=" + propertyName + ", propertyValue=" + propertyValue + "]";
+	}
 	
-	
+	 
 
 }
