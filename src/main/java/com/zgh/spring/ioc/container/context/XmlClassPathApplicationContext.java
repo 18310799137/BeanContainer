@@ -15,7 +15,6 @@ public class XmlClassPathApplicationContext extends AbstractApplicationContext {
 		super(location);
 	}
 
-	@Override
 	public Object getBean(String beanName) {
 		return super.beanFactory.getBean(beanName);
 	}

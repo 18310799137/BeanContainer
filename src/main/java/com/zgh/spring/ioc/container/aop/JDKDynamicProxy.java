@@ -12,14 +12,12 @@ public class JDKDynamicProxy implements AopProxy , InvocationHandler{
 		this.support = support;
 	}
 
-	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Exception {
 		MethodInterceptor methodInterceptor = support.getMethodInterceptor();
 		return methodInterceptor
 				.invoke(new ReflectiveMethodInvocation(support.getTargetObjectDefinition().getTarget(), method, args));
 	}
 
-	@Override
 	public Object getProxyObject() {
 		Class<?>[] interfaces = support.getTargetObjectDefinition().getClazz().getInterfaces();
 		return Proxy.newProxyInstance(support.getTargetObjectDefinition().getClass().getClassLoader(),

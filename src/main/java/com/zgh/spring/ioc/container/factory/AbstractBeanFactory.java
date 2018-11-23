@@ -14,9 +14,8 @@ import com.zgh.spring.ioc.container.bean.BeanDefinition;
  *
  */
 public abstract class AbstractBeanFactory implements BeanFactory {
-	private Map<String, BeanDefinition> beanDefinitionMaps = new HashMap<>();
+	private Map<String, BeanDefinition> beanDefinitionMaps = new HashMap<String, BeanDefinition>();
 
-	@Override
 	public Object getBean(String beanName) {
 
 		BeanDefinition beanDefinition = this.beanDefinitionMaps.get(beanName);

@@ -14,5 +14,7 @@ public class Test {
 
 		cloudService.doService();
 
+		System.out.println("CloudService:" + cloudService);
+
 	}
 }
