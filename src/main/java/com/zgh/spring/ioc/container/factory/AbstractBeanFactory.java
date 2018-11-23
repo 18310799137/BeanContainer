@@ -47,7 +47,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
 
 	public abstract Object createBean(BeanDefinition beanDefinition);
 
-	public abstract void evaluationBeanProperties(Object object, BeanDefinition beanDefinition);
+	public abstract void fillBeanProperties(Object object, BeanDefinition beanDefinition);
 
 	public boolean containsKey(String beanName) {
 		return this.beanDefinitionMaps.containsKey(beanName);

@@ -29,7 +29,8 @@ public class BeanCreateFactory extends AbstractBeanFactory {
 	 */
 	public Object createBean(BeanDefinition beanDefinition) {
 		Object object = newInstance(beanDefinition);
-		evaluationBeanProperties(object, beanDefinition);
+		fillBeanProperties(object, beanDefinition);
+		beanDefinition.setBean(object);
 		return object;
 	}
 
@@ -56,7 +57,7 @@ public class BeanCreateFactory extends AbstractBeanFactory {
 
 	/**
 	 * 
-	 * @Title: evaluationBeanProperties
+	 * @Title: fillBeanProperties
 	 * @Description: bean property 赋值
 	 * @param @param object
 	 * @param @param beanDefinition
@@ -65,7 +66,7 @@ public class BeanCreateFactory extends AbstractBeanFactory {
 	 * @date 2018年11月10日 上午11:58:07 
 	 * @throws
 	 */
-	public void evaluationBeanProperties(Object object, BeanDefinition beanDefinition) {
+	public void fillBeanProperties(Object object, BeanDefinition beanDefinition) {
 		BeanPropertys beanPropertys = beanDefinition.getBeanPropertys();
 		List<BeanProperty> beanProperties = beanPropertys.getBeanProperties();
 		Iterator<BeanProperty> iterator = beanProperties.iterator();

@@ -1,6 +1,6 @@
 package com.zgh.spring.ioc.container.service;
 
-public class CloudService {
+public class CloudService implements ICloudService{
 
 	private String cloudServiceText;
 
