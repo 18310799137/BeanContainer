@@ -1,7 +1,5 @@
 package com.zgh.spring.ioc.container.factory;
 
-import com.zgh.spring.ioc.container.bean.BeanDefinition;
-
 public interface BeanFactory {
 
 	/**
@@ -15,19 +13,6 @@ public interface BeanFactory {
 	 * @date 2018年11月10日 下午12:00:59 
 	 * @throws
 	 */
-	Object  getBean(String beanName);
-	/**
-	 * 
-	 * @Title: registerBeanDefinition
-	 * @Description: 对象注册
-	 * @param @param className
-	 * @param @param beanDefinition
-	 * @return void
-	 * @author Free
-	 * @date 2018年11月10日 下午12:00:47 
-	 * @throws
-	 */
-	void registerBeanDefinition(String className ,BeanDefinition beanDefinition);
-	
-	
+	Object getBean(String beanName);
+
 }

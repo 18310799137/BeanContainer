@@ -8,12 +8,13 @@ import com.zgh.spring.ioc.container.bean.BeanDefinition;
 import com.zgh.spring.ioc.container.bean.BeanProperty;
 import com.zgh.spring.ioc.container.bean.BeanPropertys;
 import com.zgh.spring.ioc.container.bean.BeanReference;
+
 /**
  * BeanFactory实现类
  * @author Administrator
  *
  */
-public abstract class BeanCreateFactory extends AbstractBeanFactory {
+public class BeanCreateFactory extends AbstractBeanFactory {
 
 	/**
 	 * 
@@ -52,7 +53,7 @@ public abstract class BeanCreateFactory extends AbstractBeanFactory {
 		}
 		return newInstance;
 	}
-	
+
 	/**
 	 * 
 	 * @Title: evaluationBeanProperties
@@ -68,37 +69,25 @@ public abstract class BeanCreateFactory extends AbstractBeanFactory {
 		BeanPropertys beanPropertys = beanDefinition.getBeanPropertys();
 		List<BeanProperty> beanProperties = beanPropertys.getBeanProperties();
 		Iterator<BeanProperty> iterator = beanProperties.iterator();
-		while(iterator.hasNext()) {
+		while (iterator.hasNext()) {
 			BeanProperty next = iterator.next();
 			try {
 				Field declaredField = object.getClass().getDeclaredField(next.getPropertyName());
 				declaredField.setAccessible(true);
 				Object propertyValue = next.getPropertyValue();
-				if(propertyValue instanceof BeanReference) {
-					declaredField.set(object,getBean(((BeanReference)propertyValue).getRefName()));
-				}else {
-					declaredField.set(object,propertyValue);
+				if (propertyValue instanceof BeanReference) {
+					declaredField.set(object, getBean(((BeanReference) propertyValue).getRefName()));
+				} else {
+					declaredField.set(object, propertyValue);
 				}
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
 				e.printStackTrace();
 			}
-			
-			
-		}
-	}
 
-	/**
-	 * 根据资源文件路径 价值Bean到容器
-	 *  BeanCreateFactory.
-	 *
-	 * @param location
-	 */
-	public BeanCreateFactory(String location) {
-		loadResourceToContainer(location);
+		}
 	}
 
 	public BeanCreateFactory() {
 	}
 
-	public abstract void loadResourceToContainer(String location);
 }

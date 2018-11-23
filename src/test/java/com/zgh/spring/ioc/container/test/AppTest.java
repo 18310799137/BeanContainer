@@ -1,7 +1,7 @@
 package com.zgh.spring.ioc.container.test;
 
+import com.zgh.spring.ioc.container.context.XmlClassPathApplicationContext;
 import com.zgh.spring.ioc.container.factory.BeanFactory;
-import com.zgh.spring.ioc.container.factory.XmlClassPathApplicationContext;
 import com.zgh.spring.ioc.container.service.CloudService;
 
 import junit.framework.TestCase;

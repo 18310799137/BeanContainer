@@ -1,4 +1,4 @@
-package com.zgh.spring.ioc.container.factory;
+package com.zgh.spring.ioc.container.xml;
 
 /**
  * 
@@ -10,10 +10,9 @@ package com.zgh.spring.ioc.container.factory;
  */
 public enum TagNames {
 
-	bean("bean"), id("id"), className("class"), property("property"), name("name"), 
-	value("value"),ref("ref");
+	bean("bean"), id("id"), className("class"), property("property"), name("name"), value("value"), ref("ref");
 	private TagNames(String nameStringText) {
-		this.nameStringText=nameStringText;
+		this.nameStringText = nameStringText;
 	}
 
 	private String nameStringText;

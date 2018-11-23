@@ -1,8 +1,6 @@
-package com.zgh.spring.ioc.container.factory;
+package com.zgh.spring.ioc.container.xml;
 
 import java.io.InputStream;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,9 +16,13 @@ import com.zgh.spring.ioc.container.bean.BeanReference;
 import com.zgh.spring.ioc.container.io.Resource;
 import com.zgh.spring.ioc.container.io.ResourceLoader;
 
-public class XmlClassPathApplicationContext extends BeanCreateFactory {
-	public XmlClassPathApplicationContext(String location) {
-		super(location);
+public class ResolveXmlBeanDefinitionReader extends AbstractResolveXmlBeanDefinitionReader {
+	public ResolveXmlBeanDefinitionReader() {
+		super();
+	}
+
+	public ResolveXmlBeanDefinitionReader(ResourceLoader resourceLoader) {
+		super(resourceLoader);
 	}
 
 	/**
@@ -33,7 +35,6 @@ public class XmlClassPathApplicationContext extends BeanCreateFactory {
 	 * @date 2018年11月10日 下午12:01:57 
 	 * @throws
 	 */
-	@Override
 	public void loadResourceToContainer(String location) {
 		ResourceLoader resourceLoader = new ResourceLoader();
 		Resource resource = resourceLoader.loadResource(location);
@@ -85,7 +86,6 @@ public class XmlClassPathApplicationContext extends BeanCreateFactory {
 	 * @throws
 	 */
 	public void disposeBeanNode(NodeList beanNodeList) {
-		Map<String, BeanDefinition> beanDefinitionMap = new LinkedHashMap<String, BeanDefinition>();
 		for (int i = 0; i < beanNodeList.getLength(); i++) {
 			Element beanNode = (Element) beanNodeList.item(i);
 			String beanName = beanNode.getAttribute(TagNames.id.getNameStringText());
@@ -93,9 +93,8 @@ public class XmlClassPathApplicationContext extends BeanCreateFactory {
 			BeanDefinition beanDefinition = new BeanDefinition(className);
 			NodeList propertyNodeList = getNodeListByTagName(beanNode, TagNames.property.getNameStringText());
 			disposePropertyNode(propertyNodeList, beanDefinition);
-			beanDefinitionMap.put(beanName, beanDefinition);
+			this.getResolveBeanMaps().put(beanName, beanDefinition);
 		}
-		registerBeanDefinitionMap(beanDefinitionMap);
 	}
 
 	/**
@@ -159,7 +158,8 @@ public class XmlClassPathApplicationContext extends BeanCreateFactory {
 				beanDefinition.getBeanPropertys().addBeanProperty(new BeanProperty(propertyName, propertyValue));
 			} else {
 				// 如果是ref类型的属性标签,则取出容器中存入的 相对应的bean实例
-				beanDefinition.getBeanPropertys().addBeanProperty(new BeanProperty(propertyName, new BeanReference(propertyValue)));
+				beanDefinition.getBeanPropertys()
+						.addBeanProperty(new BeanProperty(propertyName, new BeanReference(propertyValue)));
 			}
 
 		}
